@@ -1,6 +1,7 @@
 spring:
   config:
-    import: "configserver:http://localhost:8888"
+    # configserver:<주소> 에서 <주소>를 설정하지 않으면 http://localhost:8888 로 연결됨
+    import: "configserver:"
   application:
     name: hello
   profiles:

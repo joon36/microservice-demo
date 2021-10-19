@@ -14,4 +14,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:2.5.5'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.5'
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-config-client', version: '3.0.5'
+    implementation (group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '3.0.4') {
+        exclude group: 'com.google.code.gson', module: 'gson'
+    }
 }
