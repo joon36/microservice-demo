@@ -1,0 +1,7 @@
+spring:
+  config:
+    import: "configserver:"
+  application:
+    name: eurekaserver
+  profiles:
+    active: default

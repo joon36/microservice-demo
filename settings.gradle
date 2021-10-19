@@ -1,4 +1,5 @@
 rootProject.name = 'microservice-demo'
 include 'hello'
 include 'configserver'
+include 'eurekaserver'
 
