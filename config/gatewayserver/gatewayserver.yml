@@ -35,4 +35,4 @@ management:
   endpoints:
     web:
       exposure:
-        inclusde: gateway
+        include: gateway
