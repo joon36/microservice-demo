@@ -17,4 +17,5 @@ dependencies {
     implementation (group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '3.0.4') {
         exclude group: 'com.google.code.gson', module: 'gson'
     }
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.5.5'
 }
