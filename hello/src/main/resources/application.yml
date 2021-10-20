@@ -7,3 +7,26 @@ spring:
   profiles:
     # default, dev, prod 중 선택
     active: default
+
+# actuator를 통해 현재 서비스의 상태를 어떻게 보여줄지에 대한 항목
+management:
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+
+# resilience4j의 circuitbreaker 설정에서 backendA 라는 이름의 인스턴스의 설정을 추가한 것
+resilience4j.circuitbreaker:
+  instances:
+    backendA:
+      registerHealthIndicator: true
+      # 서킷이 열리기까지 몇 번의 호출을 기록할 것인지
+      minimumNumberOfCalls: 5
+      # slow call로 인식하는 기준
+      slowCallDurationThreshold: 1000
+      # minimumNumberOfCalls 횟수만큼 호출했을 때, 해당하는 호출 대비 몇 퍼센트까지 slow call이 허용되는지
+      slowCallRateThreshold: 10
+      # 설정 내용 : 총 5번의 호출에서 slow call(1초)의 비율이 10%가 넘어가면 서킷브레이커가 open된다.
+      # world service는 50% 확률로 3초 지연이 발생
