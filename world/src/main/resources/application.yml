@@ -1,0 +1,7 @@
+spring:
+  config:
+    import: "configserver:"
+  application:
+    name: world
+  profiles:
+    active: default

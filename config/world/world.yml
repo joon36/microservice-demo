@@ -1,0 +1,15 @@
+server:
+# port: 0 은 5자리 random port를 사용하게 된다.
+# 하나의 서비스로 여러 인스턴스를 만드려면, 각 인스턴스는 서로 다른 port를 가져야 하기 때문에 random port를 사용한다.
+  port: 0
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://loclahost:8761/eureka/
+# Microservice에서 트래픽이 많아지면, 한 개의 서비스에서 대해 여러 개의 인스턴스를 실행하게 된다.
+# 이 때, eureka 에서 별개의 인스턴스로 인식하도록 하기 위한 설정이다.
+    instance:
+      instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
