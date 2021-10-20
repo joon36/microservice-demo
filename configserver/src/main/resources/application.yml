@@ -7,4 +7,4 @@ spring:
       server:
         git:
           uri: https://github.com/joon36/microservice-demo
-          search-paths: config/hello, config/eurekaserver
+          search-paths: config/hello, config/eurekaserver, config/world
