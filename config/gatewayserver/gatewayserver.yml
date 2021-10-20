@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: hello
+          uri: http://localhost:8081
+          # routing을 하는 조건을 나타낸다. "hello로 시작하는 모든 요청을 위 uri로 routing하겠다." 라는 의미
+          predicates:
+            - Path=/hello/**
+          # routing을 수행하면서 추가적으로 수행할 작업들을 정의함
+          # http://localhost:8080/hello/ -> http://localhost:8081/hello/ -> http://localhost:8081/
+          filters:
+            - RewritePath=/hello/(?<path>.*), /$\{path}
+        - id: world
+          # lb를 사용하면 주소를 직접 입력하는게 아니라 서비스 이름을 작성하는 것 만으로도 서비스에 routing이 가능하다.
+          # 인스턴스가 여러개 실행되어 있다면, 각 인스턴스에 요청을 나눠서 보내게 된다.
+          uri: lb://world
+          predicates:
+            - Path=/world/**
+          filters:
+            - RewritePath=/world/(?<path>.*), /$\{path}
+
+# actuator 설정
+management:
+  endpoints:
+    web:
+      exposure:
+        inclusde: gateway

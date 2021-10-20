@@ -3,4 +3,5 @@ include 'hello'
 include 'configserver'
 include 'eurekaserver'
 include 'world'
+include 'gatewayserver'
 

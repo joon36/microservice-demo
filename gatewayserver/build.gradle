@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.5'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.5'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-config-client', version: '3.0.5'
+    implementation (group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '3.0.4') {
+        exclude group: 'com.google.code.gson', module: 'gson'
+    }
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-gateway', version: '3.0.4'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.5.5'
+}
