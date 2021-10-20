@@ -8,7 +8,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://loclahost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
 # Microservice에서 트래픽이 많아지면, 한 개의 서비스에서 대해 여러 개의 인스턴스를 실행하게 된다.
 # 이 때, eureka 에서 별개의 인스턴스로 인식하도록 하기 위한 설정이다.
     instance:
